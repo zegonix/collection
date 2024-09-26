@@ -23,3 +23,10 @@ or
 ```
 
 To exit the virtual environment use the command/script `deactivate`.
+
+
+## troubleshooting
+
+### the command prompt does not show the venv prompt
+If one customised the command prompt, that might interfere with the venv prompt.
+When using `starship` one needs to enable and include the `python` module.
