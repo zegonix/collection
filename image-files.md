@@ -1,8 +1,11 @@
 # image files
 
-- [create image file](#create-image-file)
-- [change image size](#change-image-size)
-- [mount image file](#mount-image-file)
+- [image files](#image-files)
+  - [create image file](#create-image-file)
+  - [resize image](#resize-image)
+  - [resize partition](#resize-partition)
+  - [mount image files](#mount-image-files)
+  - [setup image for Raspberry PI](#setup-image-for-raspberry-pi)
 
 
 ## create image file
@@ -16,9 +19,14 @@ dd if=/dev/zero of=test.img bs=1000000 count=7800 conv=fsync
 ```
 
 
-## change image size
+## resize image
 
 One can change an images size with `truncate --size=<size> <image-file>`. this is usually used to increase image size in order to increase the file system size (i.e. make more space for rootfs). If the goal is to decrease the memory footprint, extra care has to be taken to not cripple the filesystem.
+
+
+## resize partition
+
+One can resize a partition (if there is no data afterwards) by deleting and remaking it with `fdisk`. Make sure to choose the same start sector!.
 
 
 ## mount image files
@@ -33,21 +41,16 @@ losetup --find --show <path/to/image-file> -P
 ```
 Afterwards the partitions of the image should be shown as loopXpY and can be mounted like any other device.
 
+## setup image for Raspberry PI
 
-## modify partition table with fdisk
+This is a quick step through the setup of a raspbian image:
 
-### resize partition for rootfs
-
-## resize filesystem
-
-## mount boot partition
-
-### make file 'ssh'
-
-### make user config
-
-### remove image resize from config file ~'cmdline.txt'
-
-## mount rootfs partition
-
-### do stuff
+1. download image
+1. truncate image (see [resize image](#resize-image))
+1. resize partition with fdisk (see [resize partition](#resize-partition))
+1. resize filesystem on said partition with `resize2fs` (or similar)
+1. setup loop device and mount boot partition (see [mount image](#mount-image-file))
+1. add empty file `ssh` to boot partition
+1. add userconf.txt to boot partition, to set up initial user & password
+1. disable resize script in boot/cmdline.txt (something with `firstboot`)
+1. unmount partition and detach loop device
