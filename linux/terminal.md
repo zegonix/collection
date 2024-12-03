@@ -115,3 +115,18 @@ These escape sequences are usually not well documented.
 | `ESC[48;2;{r};{g};{b}m` | Set background color as RGB. |
 
 > Note that `;38` and `;48` corresponds to the 16 color sequence and is interpreted by the terminal to set the foreground and background color respectively. Where as `;2` and `;5` sets the color format.
+
+
+#### RGB Colors
+
+More modern terminals supports [Truecolor](https://en.wikipedia.org/wiki/Color_depth#True_color_.2824-bit.29) (24-bit RGB), which allows you to set foreground and background colors using RGB.
+
+These escape sequences are usually not well documented.
+
+| ESC Code Sequence       | Description                  |
+| :---------------------- | :--------------------------- |
+| `ESC[38;2;{r};{g};{b}m` | Set foreground color as RGB. |
+| `ESC[48;2;{r};{g};{b}m` | Set background color as RGB. |
+
+> Note that `;38` and `;48` corresponds to the 16 color sequence and is interpreted by the terminal to set the foreground and background color respectively. Where as `;2` and `;5` sets the color format.
+
