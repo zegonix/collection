@@ -2,9 +2,22 @@
 
 ## Table of contents
 
+- [glossary](#glossary)
 - [branches](#branches)
   - [create a branch](#create-a-branch)
 - [submodules](#submodules)
+- [philosophies](#philosophies)
+  - [merge](#merge)
+  - [rebase](#rebase)
+
+## terminology
+
+| term | description |
+| :--- | :---------- |
+| `^` | one commit back (in history), use `<HEAD/branch/commit_hash>^` |
+| head | pointer to branch (usually latest commit, unless detached=pointer to specific commit) currently checked out locally |
+| index | keeps track of `staged/cached` (with git add) changes |
+| working tree | local file working directory |
 
 
 ## branches
@@ -35,4 +48,35 @@ git clone --recurse-submodules
 
 # if repo is already cloned
 git submodule update --init --recursive
+```
+
+
+## philosophies
+
+Important things to always remember:
+**- do renaming in seperate commit**
+**- don't merge conflicts with directories**
+
+
+### merge
+
+When following the philosophie of merging, one merges the target branch into ones working, solves all conflicts, tests the result and then merges the working branch into the target branch. This is done with
+```sh
+# merges 'target-branch' into curret branch
+git merge <target-branch>
+
+# proceeds after solving merge conflict
+git merge --continue
+```
+
+
+### rebase
+
+When following the philosophie of rebasing, one rebases the feature branch onto the target branch. This is done with
+```sh
+# rebases current branch onto 'target-branch'
+git rebase <target-branch>
+
+# proceeds after solving rebase conflict
+git rebase --continue
 ```
