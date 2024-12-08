@@ -2,7 +2,6 @@
 
 ## Table of contents
 
-<<<<<<< HEAD
 - [glossary](#glossary)
 - [terminology](#terminology)
 - [branches](#branches)
