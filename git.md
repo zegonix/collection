@@ -91,5 +91,5 @@ git rebase <target-branch>
 # proceeds after solving rebase conflict
 git rebase --continue
 ```
-
+This is only necessary, if the 'main' branch progressed in the mean time, otherwise one just merges the feature branch into the 'main' branch.
 
