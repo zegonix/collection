@@ -7,6 +7,7 @@
 - [branches](#branches)
   - [create a branch](#create-a-branch)
 - [submodules](#submodules)
+- [stash](#stash)
 - [removing files from index](#removing-files-from-index)
 - [philosophies](#philosophies)
   - [merge](#merge)
@@ -51,6 +52,13 @@ git clone --recurse-submodules
 # if repo is already cloned
 git submodule update --init --recursive
 ```
+
+
+## stash
+
+If the current tree is dirty, one can use `git stash` to temporarily save the changes and reset the tree to the last commit.
+Afterwards the changes can be reapplied with `git stash pop`.
+This can be useful if for example one would like to create a new branch for the current changes.
 
 
 ## removing files from index
