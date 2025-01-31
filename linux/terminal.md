@@ -6,6 +6,7 @@
 ## ANSI escape sequences
 
 Ansi escape sequences are used to format output in a terminal. They **are prefixed with an escape character**, which can be written in a few ways:
+
 - Ctrl-Key `^[`
 - Octal `\033` (\0 for octal)
 - Hexadecimal `\x1B` (\x for hexadecimal)
