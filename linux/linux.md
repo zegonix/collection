@@ -6,3 +6,4 @@ This document collects knowledge, tips and tricks on all things Linux, that don'
 - [Linux commands](linux/commands.md)
 - [Permissions](linux/permissions.md)
 - [Terminal](linux/terminal.md)
+

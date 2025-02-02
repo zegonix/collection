@@ -3,7 +3,6 @@
 ## Table of contents
 
 - [glossary](#glossary)
-- [terminology](#terminology)
 - [branches](#branches)
   - [create a branch](#create-a-branch)
 - [submodules](#submodules)
@@ -13,7 +12,7 @@
   - [merge](#merge)
   - [rebase](#rebase)
 
-## terminology
+## glossary
 
 | term | description |
 | :--- | :---------- |

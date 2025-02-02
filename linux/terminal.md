@@ -1,16 +1,16 @@
-# Terminal
+## Terminal
 
 - [ANSI escape sequences](#ansi-escape-sequences)
 
 
-## ANSI escape sequences
+### ANSI escape sequences
 
 Ansi escape sequences are used to format output in a terminal. They **are prefixed with an escape character**, which can be written in a few ways:
 
 - Ctrl-Key `^[`
 - Octal `\033` (\0 for octal)
-- Hexadecimal `\x1B` (\x for hexadecimal)
-- Unicode `\u001b
+- Hexadecimal `\x1B` (\\x for hexadecimal)
+- Unicode `\u001b`
 
 The sequences is started with a `[` followed by the command and arguments. Arguments are separated with `;`. **Sequences are terminated with `m`.** 
 
@@ -20,7 +20,7 @@ The sequences is started with a `[` followed by the command and arguments. Argum
 ```
 
 For the following tables we define `ESC = \x1B`
-### Text Style
+#### Text Style
 
 | ESC Code Sequence | Reset Sequence | Description |
 | :---------------- | :------------- | :---------- |
@@ -39,12 +39,12 @@ For the following tables we define `ESC = \x1B`
 
 > **Note:** Both dim and bold modes are reset with the `ESC[22m` sequence. The `ESC[21m` sequence is a non-specified sequence for double underline mode and only works in some terminals and is reset with `ESC[24m`.
 
-### Color codes
+#### Color codes
 
 Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors. These colors are set by the user, but have commonly defined meanings.
 
 
-#### 8-16 Colors
+##### 8-16 Colors
 
 | Color Name | Foreground Color Code | Background Color Code |
 | :--------- | :-------------------- | :-------------------- |
@@ -83,7 +83,7 @@ Terminals that support the [aixterm specification](https://sites.ualberta.ca/dep
 | Bright Cyan    | `96`                  | `106`                 |
 | Bright White   | `97`                  | `107`                 |
 
-#### 256 Colors
+##### 256 Colors
 
 The following escape codes tells the terminal to use the given color ID:
 
@@ -104,7 +104,7 @@ The final 24 colors (232-255) are grayscale starting from a shade slighly lighte
 
 Some emulators interpret these steps as linear increments (`256 / 24`) on all three channels, although some emulators may explicitly define these values.
 
-#### RGB Colors
+##### RGB Colors
 
 More modern terminals supports [Truecolor](https://en.wikipedia.org/wiki/Color_depth#True_color_.2824-bit.29) (24-bit RGB), which allows you to set foreground and background colors using RGB.
 
@@ -115,19 +115,5 @@ These escape sequences are usually not well documented.
 | `ESC[38;2;{r};{g};{b}m` | Set foreground color as RGB. |
 | `ESC[48;2;{r};{g};{b}m` | Set background color as RGB. |
 
-> Note that `;38` and `;48` corresponds to the 16 color sequence and is interpreted by the terminal to set the foreground and background color respectively. Where as `;2` and `;5` sets the color format.
-
-
-#### RGB Colors
-
-More modern terminals supports [Truecolor](https://en.wikipedia.org/wiki/Color_depth#True_color_.2824-bit.29) (24-bit RGB), which allows you to set foreground and background colors using RGB.
-
-These escape sequences are usually not well documented.
-
-| ESC Code Sequence       | Description                  |
-| :---------------------- | :--------------------------- |
-| `ESC[38;2;{r};{g};{b}m` | Set foreground color as RGB. |
-| `ESC[48;2;{r};{g};{b}m` | Set background color as RGB. |
-
-> Note that `;38` and `;48` corresponds to the 16 color sequence and is interpreted by the terminal to set the foreground and background color respectively. Where as `;2` and `;5` sets the color format.
+> Note that `38` and `48` corresponds to the 16 color sequence and is interpreted by the terminal to set the foreground and background color respectively. Where as `;2` and `;5` sets the color format.
 
