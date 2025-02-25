@@ -11,3 +11,19 @@ Usage:
 ```bash
 find . -type f | xargs chmod 644
 ```
+
+### pipe output into clipboard
+
+> requires `xclip`
+
+One can save command output to the clipboard by piping it to `xclip`:
+
+```sh
+# usage
+command | xclip -selection clipboard
+
+# working example with 'echo'
+echo "hello world" | xclip -selection clipboard
+```
+
+> NOTE: the argument `-selection clipboard` is required
