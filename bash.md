@@ -29,6 +29,8 @@
 | ctrl+q     | resume output to screen |
 | ctrl+c     | terminate command |
 | ctrl+z     | suspend current command (resume with `fg`) |
+| crtl+u     | delete to start of line |
+| ctrl+k     | delete to end of line |
 | **ctrl+d** | **exit shell** |
 
 ### unbind shortcuts
