@@ -92,11 +92,21 @@ git merge --continue
 
 When following the philosophie of rebasing, one rebases the feature branch onto the target branch. This is done with
 ```sh
-# rebases current branch onto 'target-branch'
+# rebase to (newest commit of) a branch
 git rebase <target-branch>
+
+# or rebase to a specific commit
+git rebase <commit-hash>
 
 # proceeds after solving rebase conflict
 git rebase --continue
 ```
 This is only necessary, if the 'main' branch progressed in the mean time, otherwise one just merges the feature branch into the 'main' branch.
+
+
+## squash
+
+"Squashing" commits (combining several commits into one commit) is done with an interactive rebase (`git rebase -i`).
+Replace the `pick` with `squash` or just `s` for all commits to be combined.
+Afterwards a force push is needed (`git push --force-with-lease`)
 
