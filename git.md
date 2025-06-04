@@ -60,9 +60,20 @@ Afterwards the changes can be reapplied with `git stash pop`.
 This can be useful if for example one would like to create a new branch for the current changes.
 
 
-## removing files from index
+## fixup
 
-To remove files from index without deleting them on disk, use:
+Use the argument `--fixup` with the subcommand `commit` to fix a commit.
+Afterwards use `rebase --autosquash` to apply the fixup.
+
+```sh
+git add ...                           # Stage a fix
+git commit --fixup=a0b1c2d3           # Perform the commit to fix broken a0b1c2d3
+git rebase -i --autosquash a0b1c2d3~1 # Now merge fixup commit into broken commit
+```
+
+## removing files from the index
+
+To remove files from the index without deleting them on disk, use:
 ```sh
 git rm --cached <file-name>
 ```
