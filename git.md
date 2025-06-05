@@ -1,25 +1,36 @@
-# summary on some steps in the git workflow
+# git
+
+This file contains tips and tricks to remember and documents some of my findings.
+
 
 ## Table of contents
 
-- [glossary](#glossary)
-- [branches](#branches)
-  - [create a branch](#create-a-branch)
-- [submodules](#submodules)
-- [stash](#stash)
-- [removing files from index](#removing-files-from-index)
-- [philosophies](#philosophies)
-  - [merge](#merge)
-  - [rebase](#rebase)
+<!--toc:start-->
+- [git](#git)
+  - [Table of contents](#table-of-contents)
+  - [glossary](#glossary)
+  - [branches](#branches)
+    - [create a branch](#create-a-branch)
+  - [submodules](#submodules)
+  - [stash](#stash)
+  - [fixup](#fixup)
+  - [removing files from the index](#removing-files-from-the-index)
+  - [philosophies](#philosophies)
+    - [merge](#merge)
+    - [rebase](#rebase)
+  - [squash](#squash)
+<!--toc:end-->
+
 
 ## glossary
 
 | term | description |
 | :--- | :---------- |
-| `^` | one commit back (in history), use `<HEAD/branch/commit_hash>^` |
 | head | pointer to branch (usually latest commit, unless detached=pointer to specific commit) currently checked out locally |
 | index | keeps track of `staged/cached` (with git add) changes |
 | working tree | local file working directory |
+| `^` | one commit back (in history), use `<[HEAD|branch|commit_hash]>^` |
+| `~<n>` | n commits back (in history), use `<[HEAD|branch|commit]~2` |
 
 
 ## branches
