@@ -64,6 +64,15 @@ git submodule update --init --recursive
 ```
 
 
+### update reference
+
+To update a parent repositories reference to a submodule `add` the modules path and commit:
+```sh
+git add <path/to/submodule>
+git commit -m <commit-message>
+```
+
+
 ## stash
 
 If the current tree is dirty, one can use `git stash` to temporarily save the changes and reset the tree to the last commit.
