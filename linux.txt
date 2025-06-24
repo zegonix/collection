@@ -1,5 +1,0 @@
-./linux/linux.md
-./linux/setup.md
-./linux/commands.md
-./linux/permissions.md
-./linux/terminal.md
