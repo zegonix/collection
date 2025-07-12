@@ -122,10 +122,40 @@ Arguments are separated with `;`.
 For the following tables we define `ESC = \x1B`
 
 
+#### Buffer Control
+
+| Sequence | Description  |
+| :------- | :----------- |
+| `ESCc`   | clear buffer |
+
+
+#### Cursor Control
+
+The following table lists codes to control the cursor:
+
+| Sequence               | Description                                            |
+| :--------------------- | :----------------------------------------------------- |
+| `ESC[H`                | moves cursor to home position (0, 0)                   |
+| `ESC[<line>;<column>H` | moves cursor to `<line>`, `<column>`                   |
+| `ESC[<#>A`             | moves cursor up # lines                                |
+| `ESC[<#>B`             | moves cursor down # lines                              |
+| `ESC[<#>C`             | moves cursor right by # columns                        |
+| `ESC[<#>D`             | moves cursor left by # columns                         |
+| `ESC[<#>E`             | moves cursor to beginning of next line, # lines down   |
+| `ESC[<#>F`             | moves cursor to beginning of previous line, # lines up |
+| `ESC[<#>G`             | moves cursor to column #                               |
+| `ESC[6n`               | request cursor position (reports as `ESC[#;#R`)        |
+| `ESC M`                | moves cursor one line up, scrolling if needed          |
+| `ESC 7`                | save cursor position (DEC)                             |
+| `ESC 8`                | restores the cursor to the last saved position (DEC)   |
+| `ESC[s`                | save cursor position (SCO)                             |
+| `ESC[u`                | restores the cursor to the last saved position (SCO)   |
+
+
 #### Text Style
 
-| ESC Code Sequence | Reset Sequence | Description |
-| :---------------- | :------------- | :---------- |
+| ESC Code Sequence | Reset Sequence | Description                                                |
+| :---------------- | :------------- | :--------------------------------------------------------- |
 | `ESC[1;34;{...}m` |                | Set graphics modes for cell, separated by semicolon (`;`). |
 | `ESC[0m`          |                | reset all modes (styles and colors)                        |
 | `ESC[1m`          | `ESC[22m`      | set bold mode.                                             |
@@ -221,4 +251,5 @@ These escape sequences are usually not well documented.
 
 > Note that `38` and `48` corresponds to the 16 color sequence and is interpreted by the terminal to set the foreground and background color respectively.
 > Where as `;2` and `;5` sets the color format.
+
 
