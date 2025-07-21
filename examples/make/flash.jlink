@@ -1,0 +1,11 @@
+selectinterface SWD
+speed 4000
+
+reset
+halt
+
+/* the command file is a dummy replace by a makefile rule */
+/* correct path to the binary                             */
+loadfile <path-to-binary>
+
+exit
