@@ -47,6 +47,12 @@ git checkout -b <branch-name> <base-branch>
 git switch <branch-name>
 ```
 
+### delete a branch
+
+To delete a branch locally use `git branch -d <branch name>`.
+
+To delete a branch on the remote repository use `git push -d <remote> <branch name>`.
+
 
 ## submodules
 
