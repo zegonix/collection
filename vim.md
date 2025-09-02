@@ -1,6 +1,11 @@
 # nvim (neovim)
 
-- [movement quick list](#movement-quick-list)
+<!--toc:start-->
+- [nvim (neovim)](#nvim-neovim)
+  - [movement quick list](#movement-quick-list)
+  - [modes (what the workflow looks like)](#modes-what-the-workflow-looks-like)
+  - [macros](#macros)
+<!--toc:end-->
 
 
 ## movement quick list
@@ -56,3 +61,15 @@
 ## modes (what the workflow looks like)
 
 TODO..
+
+
+## macros
+
+Vim macros are a recorded sequence of commands one can replay.
+
+Start recording with `q` followed by the key which the macro should be stored under, e.g. `a`.
+Type your commands and end the recording with `q`.
+Use the macro with `@a`.
+
+Example: `q`, `a`, `f`, `.`, `a`, `Enter`, `Esc`, `q` records a macro under `a` which searches for the next full stop and inserts a newline after.
+
