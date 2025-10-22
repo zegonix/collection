@@ -40,6 +40,8 @@ mount -o loop <path/to/image-file> <mount-point>
 If the image contains multiple partitions one needs to setup a loop device first:
 ```bash
 losetup --find --show <path/to/image-file> -P
+# can be shortened to:
+losetup -f <path/to/image-file> -P
 ```
 Afterwards the partitions of the image should be shown as loopXpY and can be mounted like any other device.
 
@@ -55,5 +57,5 @@ This is a quick step through the setup of a raspbian image:
 1. mount boot partition (see [mount image files](#mount-image-files))
 1. add empty file `ssh` to boot partition
 1. add userconf.txt to boot partition, to set up initial user & password
-1. disable resize script in boot/cmdline.txt (something with `firstboot`)
+1. disable resize script in boot/cmdline.txt (something with `firstboot` or `resize`)
 1. unmount partition and detach loop device
