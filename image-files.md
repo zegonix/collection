@@ -58,4 +58,5 @@ This is a quick step through the setup of a raspbian image:
 1. add empty file `ssh` to boot partition
 1. add userconf.txt to boot partition, to set up initial user & password
 1. disable resize script in boot/cmdline.txt (something with `firstboot` or `resize`)
+   since raspios-trixie the setting is located in `/etc/cloud/cloud.cfg`
 1. unmount partition and detach loop device
