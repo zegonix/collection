@@ -91,11 +91,11 @@ table inet filter {
 
 ### starting the routing system
 
-Enable the services for `dnsmasq` and `nftables`.
+Enable the services for `dnsmasq`, `nftables` and the network manager of choice.
 On a system with `systemd` use:
 
 ```sh
-sudo systemd enable --now dnsmasq nftables
+sudo systemd enable --now dnsmasq nftables <network-manager-of-choice>
 ```
 
 Enable routing in the kernel, see [Enable routing](#enable-routing).
