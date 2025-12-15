@@ -29,8 +29,8 @@ This file contains tips and tricks to remember and documents some of my findings
 | head | pointer to branch (usually latest commit, unless detached=pointer to specific commit) currently checked out locally |
 | index | keeps track of `staged/cached` (with git add) changes |
 | working tree | local file working directory |
-| `^` | one commit back (in history), use `<[HEAD|branch|commit_hash]>^` |
-| `~<n>` | n commits back (in history), use `<[HEAD|branch|commit]~2` |
+| `^` | one commit back (in history), use `<[HEAD\|branch\|commit_hash]>^` |
+| `~<n>` | n commits back (in history), use `<[HEAD\|branch\|commit]~2` |
 
 
 ## branches
