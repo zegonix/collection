@@ -147,3 +147,23 @@ This is only necessary, if the 'main' branch progressed in the mean time, otherw
 Replace the `pick` with `squash` or just `s` for all commits to be combined.
 Afterwards a force push is needed (`git push --force-with-lease`)
 
+
+## tags
+
+Tags are labels for specific commits, for example to mark a tested commit as release.
+A tag can be created with the following command:
+
+```sh
+# annotated (unsigned) tag
+# the commit hash can be omitted to just use the commit HEAD points to
+git tag -a <tag-name> <commit-hash>
+```
+
+Tags remain local and are not synced with push by default.
+To upload tags with push, add the flag `--tags`:
+
+```sh
+git push --tags
+```
+
+
