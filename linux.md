@@ -38,11 +38,14 @@ localectl status
 #### configure layout 'US intl. with deadkeys'
 
 To configure `US intl. with deadkeys`, set the following values:
+
 ```sh
- X11 Layout: us
-  X11 Model: default
+X11 Layout:  us
+X11 Model:   default
 X11 Variant: intl
 ```
+
+Use `localectl` to show the current settings.
 
 
 ## Linux commands
