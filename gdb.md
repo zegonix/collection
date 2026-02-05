@@ -5,6 +5,40 @@
 <!--toc:end-->
 
 
+## cheat sheet (nonexhaustive)
+
+> commands can be shortened
+>
+> e.g.: `b` for `breakpoint`
+
+| **command**           | **description**                                   |
+|:----------------------|:--------------------------------------------------|
+| `continue`            | continue normal execution                         |
+| `break <position>`    | set breakpoint                                    |
+| `info breakpoint`     | list breakpoints                                  |
+| `delete <#breakpoint>`| delete breakpoint                                 |
+| `step`                | execute next instruction, then halt (step in)     |
+| `next`                | execute next instruction (step over)              |
+| `finish`              | execute until the end of the current function (step out) |
+|                       |                                                   |
+| `backtrace`           | show call stack                                   |
+| `print[/format]`      | show content of variable/memory location/register |
+| `x[/format] address`  | print memory content at address                   |
+| `list <position>`     | show file/lines/symbol in source code window      |
+|                       |                                                   |
+| `tui disable`         | disable tui                                       |
+| `tui enable`          | enable tui                                        |
+| `layout <layout>`     | select specified layout                           |
+| `layout next/prev`    | choose next or previous layout                    |
+| `focus <window>`      | focus specified window                            |
+
+| **position**          | **description**                                   |
+|:----------------------|:--------------------------------------------------|
+| `<symbol-name>`       | name of a symbol, e.g. function name              |
+| `<line>`              | line number (in current file)                     |
+| `<file>:<line>`       | line number in the specified file                 |
+
+
 ## reset program
 
 To reset the program one can use the following command
