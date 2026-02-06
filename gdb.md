@@ -2,6 +2,13 @@
 
 <!--toc:start-->
 - [GNU debugger](#gnu-debugger)
+  - [cheat sheet (nonexhaustive)](#cheat-sheet-nonexhaustive)
+  - [reset program](#reset-program)
+  - [TUI mode](#tui-mode)
+    - [TUI keybindings](#tui-keybindings)
+    - [navigation](#navigation)
+    - [layouts](#layouts)
+    - [source code view](#source-code-view)
 <!--toc:end-->
 
 
