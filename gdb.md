@@ -21,7 +21,7 @@
 | **command**           | **description**                                   |
 |:----------------------|:--------------------------------------------------|
 | `continue`            | continue normal execution                         |
-| `break <position>`    | set breakpoint                                    |
+| `break <pos|exp>`     | set breakpoint                                    |
 | `info breakpoint`     | list breakpoints                                  |
 | `delete <#breakpoint>`| delete breakpoint                                 |
 | `step`                | execute next instruction, then halt (step in)     |
@@ -29,9 +29,10 @@
 | `finish`              | execute until the end of the current function (step out) |
 |                       |                                                   |
 | `backtrace`           | show call stack                                   |
-| `print[/format]`      | show content of variable/memory location/register |
-| `x[/format] address`  | print memory content at address                   |
-| `list <position>`     | show file/lines/symbol in source code window      |
+| `print[/fmt] exp`     | show content of variable/memory location/register |
+| `display[/fmt] exp`   | print variable/memory on every program stop       |
+| `x[/fmt] address`     | print memory content at address                   |
+| `list <pos>`          | show file/lines/symbol in source code window      |
 |                       |                                                   |
 | `tui disable`         | disable tui                                       |
 | `tui enable`          | enable tui                                        |
@@ -39,11 +40,48 @@
 | `layout next/prev`    | choose next or previous layout                    |
 | `focus <window>`      | focus specified window                            |
 
+
+### position specifier
+
 | **position**          | **description**                                   |
 |:----------------------|:--------------------------------------------------|
 | `<symbol-name>`       | name of a symbol, e.g. function name              |
 | `<line>`              | line number (in current file)                     |
 | `<file>:<line>`       | line number in the specified file                 |
+
+
+### format specifier
+
+`fmt = <count><format><unit>`
+
+| **symbol** | **category** | **description**         |
+|:-----------|:------------:|:------------------------|
+| `d`        | format       | decimal                 |
+| `x`        | format       | hexadecimal             |
+| `o`        | format       | octal                   |
+| `u`        | format       | unsigned decimal        |
+| `t`        | format       | binary                  |
+| `f`        | format       | float                   |
+| `a`        | format       | address                 |
+| `i`        | format       | instruction             |
+| `c`        | format       | character               |
+| `s`        | format       | string                  |
+| `z`        | format       | hexadecimal zero padded |
+|            |              |                         |
+| `b`        | unit         | byte                    |
+| `h`        | unit         | halfword (2 bytes)      |
+| `w`        | unit         | word (4 bytes)          |
+| `g`        | unit         | giant (8 bytes)         |
+
+
+### notes on expressions (breakpoint/display/print)
+
+In Assembly one can use `$<reg>` to target the value of a register.
+To get the value of a variable or constant, use `&<symbol>`.
+
+In higher level languages like C, prefixing a symbol with `&` get its address.
+Local symbols are only valid in their scope and may not exist at all when
+compiled with optimisations.
 
 
 ## reset program
