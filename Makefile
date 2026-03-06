@@ -5,14 +5,8 @@ MULTI     := $(wildcard *.txt)
 TARGET_S  := $(SINGLE:.md=)
 TARGET_M  := $(MULTI:.txt=)
 
-PANDOC_OPT = --standalone \
--V linkcolor:blue \
--V geometry:a4paper \
--V geometry:margin=2cm \
--V mainfont="JetBrainsMono Nerd Font" \
--V sansfont="JetBrainsMono Nerd Font" \
--V monofont="JetBrainsMono Nerd Font" \
---pdf-engine=xelatex
+PANDOC_OPT = --template ./template.tex \
+             --listings
 
 .PHONY: all clean out_dir test $(DIRECTORIES)
 
