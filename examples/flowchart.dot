@@ -1,0 +1,176 @@
+digraph solution_diagram {
+    rankdir=TB;
+    nodesep=0.8;
+    splines=ortho
+
+    node [
+        fontname="JetBrainsMono",
+        style="rounded,filled",
+        fillcolor="white",
+    ];
+    edge [
+        fontname="JetBrainsMono",
+    ];
+
+    // NOTE: for some reason subgraph names have to start with `cluster`
+    // otherwise the subgraph is not treated as a box
+
+    subgraph clustermain {
+        label="";
+        color=none;
+
+        start [
+            shape=circle,
+            label="",
+            style="filled",
+            color=black,
+            fillcolor=black,
+            width=0.3,
+            rank=0,
+        ];
+        init_adc [
+            shape=box,
+            label="initialise ADC",
+        ];
+        read_adc [
+            shape=box,
+            label="read ADC value",
+        ];
+        dec_t0 [
+            shape=diamond,
+            label="if T0",
+            style="",
+        ];
+    }
+
+    subgraph clustergreen {
+        label="";
+        style=filled;
+        color="#80D070";
+
+        green [
+            shape=box,
+            label="set green\nlcd backlight",
+        ];
+        seg7 [
+            shape=box,
+            label="output adc value\nto 7seg display",
+        ];
+        ledbar [
+            shape=box,
+            label="calculate and\ndisplay led bar",
+        ];
+    }
+
+    subgraph not_green {
+        label="";
+
+        subgraph diff {
+            label="";
+
+            read_dip [
+                shape=box,
+                label="read DIPSW[7..0]",
+            ];
+            diff [
+                shape=box,
+                label="DIPSW[7..0]\n- adc value",
+            ];
+            dec_diff1 [
+                shape=diamond,
+                label="diff >= 0?",
+                style="",
+            ];
+        }
+
+        subgraph clusterblue {
+            label="";
+            style=filled;
+            color="#7080D0";
+
+            blue [
+                shape=box,
+                label="set blue\nlcd backlight",
+            ];
+            dec_diff2 [
+                shape=diamond,
+                label="diff range",
+                style="",
+            ];
+            disp2 [
+                shape=box,
+                label="display '2 Bit'\non lcd",
+            ];
+            disp4 [
+                shape=box,
+                label="display '4 Bit'\non lcd",
+            ];
+            disp8 [
+                shape=box,
+                label="display '8 Bit'\non lcd",
+            ];
+        }
+
+        subgraph clusterred {
+            label="";
+            style=filled;
+            color="#F07070";
+
+            red [
+                shape=box,
+                label="set red\nlcd backlight",
+            ];
+            count0 [
+                shape=box,
+                label="count zeroes\nin difference\n(binary value)",
+            ];
+            disp0 [
+                shape=box,
+                label="display number\nof zeroes on lcd",
+            ];
+        }
+    }
+
+    joint [
+        shape=diamond,
+        style="",
+        label="",
+        width=0.4,
+        height=0.4,
+    ];
+
+    start -> init_adc;
+    init_adc -> read_adc;
+    read_adc -> dec_t0;
+
+    dec_t0 -> green [xlabel="T0 = 1"];
+    green -> seg7;
+    seg7 -> ledbar;
+    // ledbar -> read_adc;
+
+    dec_t0 -> read_dip [xlabel="T0 = 0"];
+    read_dip -> diff;
+    diff -> dec_diff1
+    dec_diff1 -> blue [xlabel="diff >= 0"];
+    blue -> dec_diff2;
+
+    dec_diff2 -> disp2 [xlabel="diff < 4"];
+    dec_diff2 -> disp4 [xlabel="diff < 16"];
+    dec_diff2 -> disp8 [xlabel="diff >= 16"];
+
+    // disp2 -> read_adc;
+    // disp4 -> read_adc;
+    // disp8 -> read_adc;
+
+    dec_diff1 -> red [xlabel="diff < 0"];
+    red -> count0;
+    count0 -> disp0;
+    // disp0 -> read_adc;
+
+    ledbar -> joint;
+    disp2 -> joint;
+    disp4 -> joint;
+    disp8 -> joint;
+    disp0 -> joint;
+    joint -> read_adc;
+}
