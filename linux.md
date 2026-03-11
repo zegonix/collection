@@ -115,7 +115,7 @@ They **are prefixed with an escape character**, which can be written in a few wa
 
 The sequences is started with a `[` followed by the command and arguments.
 Arguments are separated with `;`.
-**Sequences are terminated with `m`.** 
+**Sequences are terminated with `m`.**
 
 ``` bash
 # Example:

@@ -19,8 +19,8 @@ TARGET := debounce
 DEVICE := STM32H573II
 
 # include c sources list
-AS_SOURCES := 
-C_SOURCES  := 
+AS_SOURCES :=
+C_SOURCES  :=
 include ./src.mk
 
 # compiler commands
@@ -45,11 +45,11 @@ DEBUG := 1
 ifeq ($(DEBUG), 1)
 	DBG_FLAGS := -g
 else
-	DBG_FLAGS := 
+	DBG_FLAGS :=
 endif
 
 AS_DEFS  := -DSTM32H563xx
-AS_INC   := 
+AS_INC   :=
 AS_FLAGS := -x assembler-with-cpp $(TARGET_FLAGS) $(AS_DEFS) $(AS_INC) $(OPT) $(DBG_FLAGS) $(COMP_FLAGS)
 
 C_DEFS   := -DSTM32H563xx
