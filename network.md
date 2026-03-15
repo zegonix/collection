@@ -5,11 +5,18 @@ This document holds network related notes.
 <!--toc:start-->
 - [Network](#network)
   - [Enable routing](#enable-routing)
-  - [Create local network with dhcp/dns](#create-local-network-with-dhcpdns)
+  - [Creating a local network with dhcp/dns](#creating-a-local-network-with-dhcpdns)
     - [`dnsmasq` configuration](#dnsmasq-configuration)
     - [`nftables` configuration](#nftables-configuration)
     - [starting the routing system](#starting-the-routing-system)
 <!--toc:end-->
+
+
+## Linux Netfilter System
+
+Text pending.
+
+![Netfilter Hooks](./resources/network/nf-hooks.png)
 
 
 ## Enable routing
@@ -27,7 +34,7 @@ net.ipv4.ip_forward=1
 ```
 
 
-## Create local network with dhcp/dns
+## Creating a local network with dhcp/dns
 
 > **WARNING:** do not use this configuration for an edge router (directly connected to the internet/isp)!
 > for an edge router you *absolutely need* to set up a reasonable firewall!
