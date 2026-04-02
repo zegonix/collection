@@ -1,6 +1,7 @@
 # git
 
-This file contains tips and tricks to remember and documents some of my findings.
+This file contains tips and tricks to remember and documents some of my
+findings.
 
 
 ## Table of contents
@@ -51,7 +52,8 @@ git switch <branch-name>
 
 To delete a branch locally use `git branch -d <branch name>`.
 
-To delete a branch on the remote repository use `git push -d <remote> <branch name>`.
+To delete a branch on the remote repository use
+`git push -d <remote> <branch name>`.
 
 
 ## submodules
@@ -72,18 +74,33 @@ git submodule update --init --recursive
 
 ### update reference
 
-To update a parent repositories reference to a submodule `add` the modules path and commit:
+To update a parent repositories reference to a submodule `add` the modules
+path and commit:
 ```sh
 git add <path/to/submodule>
 git commit -m <commit-message>
 ```
 
 
+## show only names of changed files on `show` or `diff`
+
+To only show the names of changed files, rather than full diffs, when using
+the subcommand `show` and `diff`, use the option `--name-only` or
+`--name-status`.
+
+```sh
+git show --name-only HEAD
+git diff --name-status
+```
+
+
 ## stash
 
-If the current tree is dirty, one can use `git stash` to temporarily save the changes and reset the tree to the last commit.
+If the current tree is dirty, one can use `git stash` to temporarily save the
+changes and reset the tree to the last commit.
 Afterwards the changes can be reapplied with `git stash pop`.
-This can be useful if for example one would like to create a new branch for the current changes.
+This can be useful if for example one would like to create a new branch for
+the current changes.
 
 
 ## fixup
@@ -92,9 +109,14 @@ Use the argument `--fixup` with the subcommand `commit` to fix a commit.
 Afterwards use `rebase --autosquash` to apply the fixup.
 
 ```sh
-git add ...                           # Stage a fix
-git commit --fixup=a0b1c2d3           # Perform the commit to fix broken a0b1c2d3
-git rebase -i --autosquash a0b1c2d3~1 # Now merge fixup commit into broken commit
+# Stage a fix
+git add ...
+
+# Perform the commit to fix broken a0b1c2d3
+git commit --fixup=a0b1c2d3
+
+# Now merge fixup commit into broken commit
+git rebase -i --autosquash a0b1c2d3~1
 ```
 
 ## removing files from the index
@@ -115,7 +137,11 @@ Important things to always remember:
 
 ### merge
 
-When following the philosophie of merging, one merges the target branch into ones working, solves all conflicts, tests the result and then merges the working branch into the target branch. This is done with
+When following the philosophie of merging, one merges the target branch into
+ones working, solves all conflicts, tests the result and then merges the
+working branch into the target branch.
+This is done with
+
 ```sh
 # merges 'target-branch' into curret branch
 git merge <target-branch>
@@ -127,7 +153,10 @@ git merge --continue
 
 ### rebase
 
-When following the philosophie of rebasing, one rebases the feature branch onto the target branch. This is done with
+When following the philosophie of rebasing, one rebases the feature branch
+onto the target branch.
+This is done with
+
 ```sh
 # rebase to (newest commit of) a branch
 git rebase <target-branch>
@@ -138,19 +167,23 @@ git rebase <commit-hash>
 # proceeds after solving rebase conflict
 git rebase --continue
 ```
-This is only necessary, if the 'main' branch progressed in the mean time, otherwise one just merges the feature branch into the 'main' branch.
+This is only necessary, if the 'main' branch progressed in the mean time,
+otherwise one just merges the feature branch into the 'main' branch.
 
 
 ## squash
 
-"Squashing" commits (combining several commits into one commit) is done with an interactive rebase (`git rebase -i`).
+"Squashing" commits (combining several commits into one commit) is done with
+an interactive rebase (`git rebase -i`).
 Replace the `pick` with `squash` or just `s` for all commits to be combined.
-Afterwards a force push is needed (`git push --force-with-lease`)
+Afterwards a force push is needed, **ALWAYS** use `--force-with-lease`
+instead of just `--force`.
 
 
 ## tags
 
-Tags are labels for specific commits, for example to mark a tested commit as release.
+Tags are labels for specific commits, for example to mark a tested commit
+as release.
 A tag can be created with the following command:
 
 ```sh
